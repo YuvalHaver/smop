@@ -4,7 +4,7 @@ import freesbe_graphs as fg
 
 ro = 1.2041
 cl0 = 0.15
-cl_alpha = 2.8
+cl_alpha = 1.4
 cd0 = 0.1
 cd_alpha = 2.5
 alpha0=-4
@@ -37,9 +37,10 @@ def calculate_v_rel(ux,uz, vx,vz):
 
     return np.sqrt(math.pow(ux,2)+math.pow(uz,2))
 
-def one_step(u_x_prev, u_z_prev,cl,cd,vx,vz,x_arr,z_arr):
-
+def one_step(u_x_prev, u_z_prev,cl,cd,vx,vz,x_arr,z_arr, alpha):
     betta=np.arctan(float(u_z_prev[-1])/float(u_x_prev[-1]))
+    cl= calculate_Cl(alpha-betta)
+    cd= calculate_Cd(alpha-betta)
     ux_new=u_x_prev[-1]+dt*coef*math.pow(calculate_v_rel(u_x_prev[-1],u_z_prev[-1],vx,vz),2)*(-cl*np.sin(betta)-cd*np.cos(betta))
     uz_new=u_z_prev[-1]+dt*(coef*math.pow(calculate_v_rel(u_x_prev[-1],u_z_prev[-1],vx,vz),2)*(cl*np.cos(betta)-cd*np.sin(betta))-g)
     x_arr.append(x_arr[-1]+ux_new*dt)
@@ -60,7 +61,7 @@ def basic_simulation(u0_x,u0_z,v_x_air,v_z_air,alpha,x_0,z_0):
     cl=calculate_Cl(alpha)
     cd=calculate_Cd(alpha)
     while (z_array[-1]>0):
-        u_x_curr,u_z_curr=one_step(ux_arr,uz_arr,cl,cd,v_x_air,v_z_air, x_array,z_array)
+        u_x_curr,u_z_curr=one_step(ux_arr,uz_arr,cl,cd,v_x_air,v_z_air, x_array,z_array, alpha)
         ux_arr.append(u_x_curr)
         uz_arr.append(u_z_curr)
         t.append(t[-1] + dt)
@@ -68,7 +69,7 @@ def basic_simulation(u0_x,u0_z,v_x_air,v_z_air,alpha,x_0,z_0):
     return x_array, z_array, t, ux_arr, uz_arr
 
 if __name__ == '__main__':
-    x,z, t,ux,uz = basic_simulation(14,0,0,0,10,0,1)
+    x,z, t,ux,uz = basic_simulation(14,0,0,0,7,0,2)
     fg.draw_xyt(x, 'x', z, 'z', t, 't')
     fg.draw_y_as_x( t, 't', ux, 'u_x')
     fg.draw_y_as_x(  t, 't', uz, 'u_z')
