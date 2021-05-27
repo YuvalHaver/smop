@@ -1,6 +1,6 @@
 import math
 import numpy as np
-import freesbe_graphs as fg
+from constants import *
 
 ro = 1.2041
 cl0 = 0.15
@@ -81,7 +81,7 @@ def basic_simulation(u0_x, u0_z, theta, omega, x_0, z_0):
 
 if __name__ == '__main__':
     x, z, t, ux, uz, theta, omega = basic_simulation(14, 0, 14 / 180*np.pi, 3,  0, 1.7)
-    fg.draw_xyt(x, 'x', z, 'z', t, 't')
-    fg.draw_y_as_x(t, 't', ux, 'u_x')
-    fg.draw_y_as_x(t, 't', uz, 'u_z')
+    draw_xyt(x, 'x', z, 'z', t, 't')
+    draw_y_as_x(t, 't', ux, 'u_x')
+    draw_y_as_x(t, 't', uz, 'u_z')
     # comment
