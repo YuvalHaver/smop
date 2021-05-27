@@ -97,3 +97,5 @@ if __name__ == '__main__':
     fg.draw_y_as_x(t, 't', uz, 'u_z')
     betta_arr = [np.arctan(uz[i] / ux[i]) * (180 / np.pi) for i in range(len(ux))]
     fg.draw_y_as_x(t, 't', betta_arr, 'betta')
+    # comment
+
