@@ -1,6 +1,7 @@
 import math
 import numpy as np
 import constants as cst
+from constants import *
 
 
 def calc_next_step(V_x_prev, V_z_prev, theta, X, Z):

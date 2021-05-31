@@ -43,6 +43,8 @@ def calc_Cd(alpha):
 def calc_v_rel(V_x, V_z):
     return np.sqrt(math.pow(V_x, 2) + math.pow(V_z, 2))
 
+def calc_v_rel_3D(V_x,V_y, V_z):
+    return np.sqrt(math.pow(V_x, 2)+ math.pow(V_y, 2) + math.pow(V_z, 2))
 
 def draw_y_as_x(x, x_name, y, y_name):
     """
