@@ -77,7 +77,7 @@ def basic_simulation(u0_x, u0_y, u0_z, theta, x_0, y_0, z_0):
 
 
 if __name__ == '__main__':
-    ux, uy, uz, theta, x, y, z, t = basic_simulation(10, 0, 0,-8 * np.pi / 180, 0, 0, 1.7)
+    ux, uy, uz, theta, x, y, z, t = basic_simulation(0, 0, 0,-8 * np.pi / 180, 0, 0, 1.7)
     draw_xyt(x, 'x', z, 'z', t, 't')
     draw_y_as_x(t, 't', ux, 'u_x')
     draw_y_as_x(t, 't', uz, 'u_z')
