@@ -23,7 +23,7 @@ def one_step(u_x_prev, u_y_prev, u_z_prev, x_arr, y_arr, z_arr, theta, theta_1, 
     pitch = (CM0 + CM_alpha * (theta[-1] - betta) + CMq * (theta_1[-1])) * constants
 
     theta_2.append((pitch + I_z * phi_1[-1] * np.cos(theta[-1]) * (phi_1[-1] * np.sin(theta[-1]) + gamma_1[-1]) - I_z *
-                    phi_1[-1] ** 2 * np.cos(theta[-1]) * np.sin(theta[-1])) / I_x)
+                    phi_1[-1] ** 2 * np.cos(theta[-1]) * np.sin(theta[-1])) / I_X_Y)
 
     theta_1.append(theta_1[-1] + theta_2[-1] * dt)
 
@@ -32,7 +32,7 @@ def one_step(u_x_prev, u_y_prev, u_z_prev, x_arr, y_arr, z_arr, theta, theta_1, 
     roll = (CRr * gamma_1[-1] + CRp * phi_1[-1]) * constants
 
     phi_2.append((roll + I_x * theta_1[-1] * phi_1[-1] * np.sin(theta[-1]) - I_z * theta_1[-1] * (
-                phi_1[-1] * np.sin(theta[-1]) + gamma_1[-1]) + I_x * theta_1[-1] * phi_1[-1]) * np.cos(theta[-1]) / I_x)
+                phi_1[-1] * np.sin(theta[-1]) + gamma_1[-1]) + I_x * theta_1[-1] * phi_1[-1]) * np.cos(theta[-1]) / I_X_Y)
 
     phi_1.append(phi_1[-1] + phi_2[-1] * dt)
 
@@ -77,7 +77,7 @@ def basic_simulation(u0_x, u0_y, u0_z, theta, x_0, y_0, z_0):
 
 
 if __name__ == '__main__':
-    ux, uy, uz, theta, x, y, z, t = basic_simulation(0, 0, 0,-8 * np.pi / 180, 0, 0, 1.7)
+    ux, uy, uz, theta, x, y, z, t = basic_simulation(14, 0, 0,45 * np.pi / 180, 0, 0, 1.7)
     draw_xyt(x, 'x', z, 'z', t, 't')
     draw_y_as_x(t, 't', ux, 'u_x')
     draw_y_as_x(t, 't', uz, 'u_z')
