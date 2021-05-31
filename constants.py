@@ -14,7 +14,7 @@ g = 9.81
 Ro = 1.2041
 m = 0.175
 R = 0.1
-d = 2*R
+d = 2 * R
 A = np.pi * R ** 2
 
 coef = (Ro * A) / (2 * m)
@@ -22,7 +22,7 @@ dt = 10 ** -4
 
 I_x = 0.25 * m * R ** 2
 I_z = 0.5 * m * R ** 2
-I_X_Y= -m*R**2
+I_X_Y = -m * R ** 2
 
 CRr = 0.0017
 CRp = -5.5 * 10 ** (-3)
@@ -43,8 +43,10 @@ def calc_Cd(alpha):
 def calc_v_rel(V_x, V_z):
     return np.sqrt(math.pow(V_x, 2) + math.pow(V_z, 2))
 
-def calc_v_rel_3D(V_x,V_y, V_z):
-    return np.sqrt(math.pow(V_x, 2)+ math.pow(V_y, 2) + math.pow(V_z, 2))
+
+def calc_v_rel_3D(V_x, V_y, V_z):
+    return np.sqrt(math.pow(V_x, 2) + math.pow(V_y, 2) + math.pow(V_z, 2))
+
 
 def draw_y_as_x(x, x_name, y, y_name):
     """
