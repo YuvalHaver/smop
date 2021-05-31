@@ -14,7 +14,7 @@ g = 9.81
 Ro = 1.2041
 m = 0.175
 R = 0.1
-d = 2 * R
+d = 2*R
 A = np.pi * R ** 2
 
 coef = (Ro * A) / (2 * m)
@@ -77,3 +77,13 @@ def draw_xyt(x, x_name, y, y_name, t, t_name):
     draw_y_as_x(t, t_name, x, x_name)
     draw_y_as_x(t, t_name, y, y_name)
     draw_y_as_x(x, x_name, y, y_name)
+
+
+def draw_3D_graph(x, x_name, y, y_name, z, z_name):
+    fig = plt.figure()
+    ax = plt.axes(projection='3d')
+    ax.plot3D(x, y, z)
+    ax.set_xlabel(x_name)
+    ax.set_ylabel(y_name)
+    ax.set_zlabel(z_name)
+    fig.show()
