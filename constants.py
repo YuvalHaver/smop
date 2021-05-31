@@ -8,12 +8,13 @@ Cl_0 = 0.15
 Cl_alpha = 1.41
 cd_0 = 0.08
 cd_alpha = 2.7
-alpha_0 = -4 * (np.pi/180) # degrees
+alpha_0 = -4 * (np.pi / 180)  # degrees
 
 g = 9.81
 Ro = 1.2041
 m = 0.175
 R = 0.1
+d = 2 * R
 A = np.pi * R ** 2
 
 coef = (Ro * A) / (2 * m)
@@ -35,7 +36,6 @@ def calc_Cl(alpha):
 
 def calc_Cd(alpha):
     return cd_0 + cd_alpha * (alpha - alpha_0) ** 2
-
 
 
 def calc_v_rel(V_x, V_z):
