@@ -87,7 +87,7 @@ def unit_vector(vector):
     return vector / np.linalg.norm(vector)
 
 
-def angle_between(v1, v2,z):
+def angle_between(v1, v2, z):
     """ Returns the angle in radians between vectors 'v1' and 'v2'"""
     v1_size = np.linalg.norm(v1)
     v2_size = np.linalg.norm(v2)
@@ -95,6 +95,8 @@ def angle_between(v1, v2,z):
         print(v1, v2)
         print(v1_size, v2_size)
         print(np.vdot(v1, v2) / (v2.size * v1.size))
+    if np.vdot(v1, v2) / (v2.size * v1.size) > 1:
+            return np.arccos(1)
     return np.arccos(np.vdot(v1, v2) / (v2.size * v1.size))
 
 
@@ -130,7 +132,7 @@ def simulation(x_0=0, y_0=0, z_0=0, V0_x=0, V0_y=0, V0_z=0, theta0=0, theta_dot0
     U_z = [V_b[2][0]]
 
     while Z[-1] > 0:
-        print(Z[-1])
+        # print(Z[-1])
         V_N = np.array([[V_x[-1]],
                         [V_y[-1]],
                         [V_z[-1]]])

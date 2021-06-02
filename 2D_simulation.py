@@ -35,7 +35,7 @@ def basic_simulation(V0_x, V0_z, theta, X_0, Z_0):
 
 
 if __name__ == '__main__':
-    x, z, t, ux, uz = basic_simulation(14, 0, 0 * np.pi/180, 0, 2)
+    x, z, t, ux, uz = basic_simulation(14, 0, 7.5 * np.pi/180, 0, 1)
     cst.draw_xyt(x, 'x', z, 'z', t, 't')
     cst.draw_y_as_x(t, 't', ux, 'u_x')
     cst.draw_y_as_x(t, 't', uz, 'u_z')

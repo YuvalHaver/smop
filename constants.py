@@ -18,11 +18,11 @@ d = 2 * R
 A = np.pi * R ** 2
 
 coef = (Ro * A) / (2 * m)
-dt = 10 ** -4
+dt = 10 ** -3
 
 I_x = 0.25 * m * R ** 2
 I_z = 0.5 * m * R ** 2
-I_X_Y = -m * R ** 2
+I_X_Y = m * R ** 2
 
 CRr = 0.0017
 CRp = -5.5 * 10 ** (-3)
@@ -30,6 +30,10 @@ CM0 = -0.08
 CM_alpha = 0.43
 CMq = -5 * 10 ** (-3)
 CNr = -7.18 * 10 ** (-6)
+
+""" 3D Simulation"""
+CM_alpha_tag = 0.029
+CR_gamma_tag = 0.012
 
 
 def calc_Cl(alpha):
@@ -45,7 +49,7 @@ def calc_v_rel(V_x, V_z):
 
 
 def calc_v_rel_3D(V_x, V_y, V_z):
-    return np.sqrt(math.pow(V_x, 2) + math.pow(V_y, 2) + math.pow(V_z, 2))
+    return np.linalg.norm([[V_x],[V_y], [V_z]])
 
 
 def draw_y_as_x(x, x_name, y, y_name):

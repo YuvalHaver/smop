@@ -2,20 +2,13 @@ import constants as cst
 from mpl_toolkits import mplot3d
 import numpy as np
 import matplotlib.pyplot as plt
-
+from final_try import *
+import numpy.linalg as linalg
 
 if __name__ == '__main__':
-    fig = plt.figure()
-    ax = plt.axes(projection='3d')
-
-    # Data for a three-dimensional line
-    zline = np.linspace(0, 15, 1000)
-    xline = np.sin(zline)
-    yline = np.cos(zline)
-    ax.plot3D(xline, yline, zline)
-    # Data for three-dimensional scattered points
-    # zdata = 15 * np.random.random(100)
-    # xdata = np.sin(zdata) + 0.1 * np.random.randn(100)
-    # ydata = np.cos(zdata) + 0.1 * np.random.randn(100)
-    # ax.scatter3D(xdata, ydata, zdata, c=zdata, cmap='Greens')
-    fig.show()
+    a1 = np.array([[1], [2], [3]])
+    a3 = np.array([[1], [1], [1], [1]])
+    a2 = np.mat([[1, 1, 1, 1], [1, 1, 1, 0], [1, 1, 0, 0], [1, 0, 0, 0]])
+    #print(np.vdot(a3, a1))
+    print(linalg.norm(a1))
+    print(np.matmul(linalg.inv(a2), a2))
